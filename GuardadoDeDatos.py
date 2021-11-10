@@ -1,4 +1,4 @@
-#Acá sólo la está imprimiendo, pero podría guardar las variables en algún lugar.
+#Acá sólo la está imprimiendo, pero podría guardar las variables en algún lugar u objeto
 
 def userData():
     name=input("Cual es tu nombre? ")
@@ -8,7 +8,8 @@ def userData():
     while age.isdigit() == False:
         age=input("Ingrese una edad válida: ")
     mail=input("Cual es tu mail? ")
-    while(mail.find("@") == -1):
+    # while(mail.find("@") == -1):  #alternativa descartada
+    while("@" not in mail):     
         mail=input("Ingrese un mail válido: ")
     phone=input("Cual es tu teléfono? ")
     while phone.isdigit() == False:
