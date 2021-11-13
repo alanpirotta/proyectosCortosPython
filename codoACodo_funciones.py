@@ -70,3 +70,107 @@ if año <= 0:
 resultado = esFechaValida(dia, mes, año)
 print(resultado)
 '''
+
+
+'''
+Un comercio de electrodomésticos necesita para su línea de cajas un programa que le indique al cajero el cambio que debe entregarle al cliente. Para eso se ingresan dos números enteros, correspondientes al total de la compra y al dinero recibido. Informar cuántos billetes de cada denominación deben ser entregados al cliente como vuelto, de tal forma que se minimice la cantidad de billetes. Considerar que existen billetes de $500, $100, $50, $20, $10, $5 y $1. Emitir un mensaje de error si el dinero recibido fuera insuficiente. Ejemplo: si la compra es de $317 y se abona con $500, el vuelto debe contener 1 billete de $100, 1 billete de $50, 1 billete de $20, 1 billete de $10 y 3 billetes de $1.
+'''
+'''
+def cambio(costo, pagado):
+    vuelto = costo - pagado
+    billete500 = 0
+    billete100 = 0
+    billete50 = 0
+    billete20 = 0
+    billete10 = 0
+    billete5 = 0
+    billete1 = 0
+    if vuelto < 0:
+        return print("El dinero es insuficiente")
+    else:
+        while vuelto > 500:
+            billete500+=1
+            vuelto -= 500
+        while vuelto > 100:
+            billete100+=1
+            vuelto -= 100
+        while vuelto > 50:
+            billete50 += 1
+            vuelto -= 50
+        while vuelto > 20:
+            billete20 += 1
+            vuelto -= 20
+        while vuelto > 10:
+            billete10 += 1
+            vuelto -= 10
+        while vuelto > 5:
+            billete5 += 1
+            vuelto -= 5
+        while vuelto > 1:
+            billete1 += 1
+            vuelto -= 1
+    return print(f'Su vuelto es ${costo-pagado}. Dar de vuelto {billete500} billetes de $500, {billete100} billetes de $100, {billete50} billetes de $50, {billete20} billetes de $20, {billete10} billetes de $10, {billete5} billetes de $5 y {billete1} billetes de $1')
+    
+    
+resultado= cambio(500,317)
+'''
+#Funcionó, pero quiero probar con listas y un eliminar cuando son 0 billetes
+
+
+'''
+def cambio (costo, pagado):
+    vueltoRestante = pagado - costo
+    billetes = [500, 100, 50, 20, 10, 5, 1]
+    cantidadBilletes = [0,0,0,0,0,0,0]
+    cambio= f'Su vuelto es {vueltoRestante}. Devolver '
+    if vueltoRestante < 0:
+        return "Lo pagado no es suficiente"
+    else:
+        for i in range(7):
+            while vueltoRestante > billetes[i]:
+                vueltoRestante -= billetes[i]
+                cantidadBilletes[i] += 1
+            if cantidadBilletes[i] == 0:
+                continue
+            elif cantidadBilletes[i] == 1:
+                cambio += f'{cantidadBilletes[i]} billete de ${billetes[i]}, '
+            else:
+                cambio += f'{cantidadBilletes[i]} billetes de ${billetes[i]}, '       
+        cambio = cambio.strip(", ")
+        return cambio
+            
+            
+resultado = cambio(100,318)
+print(resultado)
+'''
+
+'''
+Escribir dos funciones separadas para imprimir por pantalla los siguientes patrones de asteriscos, donde la cantidad de filas se recibe como parámetro:
+**********          **
+**********          ****
+**********          ******
+**********          ********
+**********          **********
+'''
+'''
+def patronLineal(filas):
+    for i in range(filas):
+        print("**********")
+        
+def patronAumentaEnDos(filas):
+    for i in range(filas):
+        for j in range((i+1)*2):
+            print("*", end="")
+        print("")
+
+        
+patronLineal(7)
+
+patronAumentaEnDos(10)
+'''
+
+'''
+Crear una función lambda que devuelva el cuadrado de un valor recibido cómo parámetro. Desarrollar además un programa para verificar el comportamiento de la función.
+'''
+cuadrado = lambda x: x**2
+cuadrado(4)
