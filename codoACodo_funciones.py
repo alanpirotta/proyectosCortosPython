@@ -220,8 +220,10 @@ print(lista)
 '''
 
 #Tiene un conflicto si la lista original tiene duplicados, sólo elimina el primero.
-'''
+
 #alternativa
+#No funciona, salta una iteración si la actual entra en el if, no se por qué
+'''
 lista = ["hola", "chau", "Alan", "Pedro", "Ana", "Daniela", "Carlos"]
 print(lista)
 listaPalabrasAEliminar = ["Alan", "chau", "Juan", "Ana"]
@@ -252,6 +254,7 @@ print(resultado2)
 10) Desarrollar una función que determine si una cadena de caracteres es capicúa, sin utilizar cadenas auxiliares ni rebanadas. Escribir además un programa que permita verificar su funcionamiento.
 '''
 def capicua(cadena): #Tengo que probar hacer un ciclo que recorra todas las posiciones de los caracteres y lo compare contra los opuestos
+    return True
     #no funciona esto, después tengo que ver el error
     #return cadena.split("").join("") == cadena.split("").reversed().join("")
 
