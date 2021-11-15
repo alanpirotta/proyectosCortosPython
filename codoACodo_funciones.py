@@ -222,20 +222,21 @@ print(lista)
 #Tiene un conflicto si la lista original tiene duplicados, sólo elimina el primero.
 
 #alternativa
-#No funciona, salta una iteración si la actual entra en el if, no se por qué
 '''
-lista = ["hola", "chau", "Alan", "Pedro", "Ana", "Daniela", "Carlos"]
+lista = ["hola", "chau", "Alan", "Pedro", "Ana", "Daniela", "Carlos", "Alan"]
 print(lista)
 listaPalabrasAEliminar = ["Alan", "chau", "Juan", "Ana"]
 print(listaPalabrasAEliminar)
+listaNueva = []
 for element in lista:
-    print(f'Principio del loop de {element}')
+    listaNueva.append(element)
+#recorró la lista origina, eliminando de la segunda (evito el salto del siguiente elemento al eliminar el actual) 
+for element in lista: 
     if element in listaPalabrasAEliminar:   
-        print(f'el {element} esta para eliminar')
-        lista.remove(element) 
-    print(f'Final del loop de {element}')
-print(lista)
+        listaNueva.remove(element) 
+print(listaNueva)
 '''
+
 
 '''
 9) Escribir una función que reciba una lista como parámetro y devuelva True si la lista está ordenada en forma ascendente o False en caso contrario. Por ejemplo, ordenada([1, 2, 3]) retorna True y ordenada(['b', 'a']) retorna False. Desarrollar además un programa para verificar el comportamiento de la función.
@@ -253,26 +254,83 @@ print(resultado2)
 '''
 10) Desarrollar una función que determine si una cadena de caracteres es capicúa, sin utilizar cadenas auxiliares ni rebanadas. Escribir además un programa que permita verificar su funcionamiento.
 '''
+'''
 def capicua(cadena): #Tengo que probar hacer un ciclo que recorra todas las posiciones de los caracteres y lo compare contra los opuestos
-    return True
-    #no funciona esto, después tengo que ver el error
+    j = -1
+    capicua = True
+    for i in range(len(cadena)):
+        # print(f'valor i {i}, valor j {j}')
+        # print(f'{cadena[i]} es igual a {cadena[j]}')
+        if cadena[i] != cadena[j]:
+            capicua = False
+            break
+        j -= 1
+    return capicua
+    #no funciona esto de abajo, después tengo que ver el error  y averiuar por qué ocurre
     #return cadena.split("").join("") == cadena.split("").reversed().join("")
-
-resultado = capicua("hola")
+resultado = capicua("neuquen")
 print(resultado)
+resultado2 = capicua("hola me llamo alan nala omall em aloh")
+print(resultado2)
+resultado3 = capicua("oihsalkfhds")
+print(resultado3)
+'''
 
 '''
 11) Leer una cadena de caracteres e imprimirla centrada en pantalla. Suponer que la misma tiene 80 columnas.
 '''
-
+'''
+cadena="hola me llamo alan"
+print(cadena.center(80))
+'''
 
 '''
 12) Escribir una función que reciba como parámetro una tupla conteniendo una fecha (día,mes,año) y devuelva una cadena de caracteres con la misma fecha expresada en formato extendido. Por ejemplo, para (12, 10,17) devuelve “12 de Octubre de 2017”. Escribir también un programa para verificar su comportamiento.
 '''
+'''
+def fechaExtendida (tupla):
+    mes = ""
+    if tupla[1] < 1 or tupla[1] > 12:
+        return "no es una fecha válida" #podría chequear que sea fecha válida usando la función de la línea 32
+    elif tupla[1] == 1:
+        mes= "Enero"
+    elif tupla[1] == 2:
+        mes= "Febrero"
+    elif tupla[1] == 3:
+        mes= "Marzo"
+    elif tupla[1] == 4:
+        mes= "Abril"
+    elif tupla[1] == 5:
+        mes= "Mayo"
+    elif tupla[1] == 6:
+        mes= "Junio"
+    elif tupla[1] == 7:
+        mes= "Julio"
+    elif tupla[1] == 8:
+        mes= "Agosto"
+    elif tupla[1] == 9:
+        mes= "Septiembre"
+    elif tupla[1] == 10:
+        mes= "Octubre"
+    elif tupla[1] == 11:
+        mes= "Noviembre"
+    elif tupla[1] == 12:
+        mes= "Diciembre"
+    return f'{tupla[0]} de {mes} de {tupla[2]}'
 
+resultado = fechaExtendida((30, 11, 1988))
+print(resultado)
+resultado2 = fechaExtendida((31, 12, 2021))
+print(resultado2)
+'''
 
 '''
 13) Ingresar una frase desde el teclado y usar un conjunto para eliminar las palabras repetidas, dejando un solo ejemplar de cada una. Finalmente mostrar las palabras ordenadas según su longitud.
+'''
+'''
+frase = input("ingrese una frase: ")
+listaFrase = sorted(list(set(frase.split(" "))), key = len)
+print(listaFrase)
 '''
 
 
