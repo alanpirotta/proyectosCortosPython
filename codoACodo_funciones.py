@@ -337,8 +337,43 @@ print(listaFrase)
 '''
 14) Desarrollar una función eliminar_claves() que reciba como parámetros un diccionario y una lista de claves. La función debe eliminar del diccionario todas las claves contenidas en la lista, devolviendo el diccionario modificado y un valor de verdad que indique si la operación fue exitosa. Desarrollar también un programa para verificar su comportamiento.
 '''
+'''
+def eliminar_claves(diccionario, claves):
+    for clave in claves:
+        if clave in diccionario:
+            # diccionario.pop(clave) #Alternativa, funcionan igual
+            del diccionario[clave]
 
+diccionario = {'saludo': 'hola', 'nombre': 'Alan', 'Apellido': 'Pirotta', 'edad' : 32}
+print(diccionario)
+eliminar_claves(diccionario, ['saludo', 'edad'])
+print(diccionario)
+'''
 
 '''
 15) Escribir una función para eliminar una subcadena de una cadena de caracteres, a partir de una posición y cantidad de caracteres dados, devolviendo la cadena resultante. Escribir también un programa para verificar el comportamiento de la misma. Escribir una función utilizando rebanadas.
+'''
+
+'''
+def eliminarSubcadena(cadena, posicion, cantidad):
+    if posicion < 0 or posicion > len(cadena)-1:
+        return "La posición no es válida"
+    listaCadena = list(cadena)
+    del listaCadena[int(posicion):int((posicion+cantidad))]
+    cadenaCortada = ''.join(listaCadena)
+    return cadenaCortada
+'''
+
+#Alternativa sin pasar a una lista
+'''
+def eliminarSubcadena(cadena, posicion, cantidad):
+    if posicion < 0 or posicion > len(cadena)-1:
+        return "La posición no es válida"
+    subString = cadena[int(posicion):int(cantidad+posicion)]
+    cadenaCortada= cadena.replace(subString,"")
+    return cadenaCortada
+    
+    
+resultado = eliminarSubcadena("hola me llamo Alan", 18, 1)
+print(resultado)
 '''
