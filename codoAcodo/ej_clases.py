@@ -66,41 +66,232 @@ print(persona1.get_eda())
 '''
 2) Agregarle a la clase anterior un constructor que reciba nombre y edad.
 '''
+
+'''
 persona2=Persona()
 persona2.inicializar("Juan", 40)
 print(persona2.get_nombre(), persona2.get_edad())
 '''
+
+
+'''
 3) Agregarle a la clase anterior un método “es_mayor_de_edad” que devuelva True o False.
+'''
 '''
 print(persona1.mayor_de_edad())
 print(persona2.mayor_de_edad())
+'''
 
 '''
 4) Agregarle un método “es_mayor_que” el cual recibe un objeto persona y compara su edad con la del objeto actual.
 '''
-print("es mayor que", persona2.es_mayor_que(persona1.edad)) 
+# print("es mayor que", persona2.es_mayor_que(persona1.edad)) 
+#está mal esto, revisar teoría
 
 '''
 5) Agregarle un método estático “get_mayor” que reciba dos objetos Persona y devuelva el de edad mayor.
 '''
-print(Persona.get_mayor(persona1.edad, persona2.edad))
-#está mal esto y el anterior
+# print(Persona.get_mayor(persona1.edad, persona2.edad))
+#está mal esto, revisar teoría
 '''
 6) Realizar un programa que conste de una clase llamada Alumno que tenga como atributos el nombre y la nota del alumno. Definir los métodos para inicializar sus atributos, imprimirlos y mostrar un mensaje con el resultado de la nota y si ha aprobado o no.´
 '''
+class Alumno:
+    def __init__(self, nombre, nota):
+        self.nombre=nombre
+        self.nota=nota
+    def print(self):
+        print(f'Nombre: {self.nombre}')
+        print(f'Nota: {self.nota}')
+    def aprobado(self):
+        if self.nota > 7:
+            print("Está aprobado")
+        else:
+            print("Está desaprobado")
 
+'''
+alumno1=Alumno("Alan",8)
+alumno1.print()
+alumno1.aprobado()
+'''
 '''
 7) Desarrollar un programa que cargue los datos de un triángulo. Implementar una clase con los métodos para inicializar los atributos, imprimir el valor del lado con un tamaño mayor y el tipo de triángulo que es (equilátero, isósceles o escaleno).
 '''
+class Triangulo:
+    def __init__(self, lado1, lado2, lado3):
+        self.lado1=lado1
+        self.lado2=lado2
+        self.lado3=lado3
+    def ladoMayor(self):
+        if self.lado1>=self.lado2 and self.lado1>=self.lado3:
+            print(f'El lado mayor mide {self.lado1}')
+        elif self.lado2>=self.lado1 and self.lado2>=self.lado3:
+            print(f'El lado mayor mide {self.lado2}')
+        else:
+            print(f'El lado mayor mide {self.lado3}')
+    def tipoTriangulo(self):
+        if self.lado1==self.lado2==self.lado3:
+            print("Equilatero")
+        elif self.lado1==self.lado2 or self.lado1==self.lado3 or self.lado2==self.lado3:
+            print("Isósceles")
+        else:
+            print("Escaleno")
+    #Alternativa todo junto. Es muy engorrosa, no me gustó
+    def caracteristicas(self):
+        if self.lado1==self.lado2==self.lado3:
+            print(f'Lado mayor: {self.lado1}')
+            print(f'Tipo de triangulo: Equilatero')
+        elif (self.lado1==self.lado2 and self.lado1>self.lado3) \
+            or (self.lado1==self.lado3 and self.lado1>self.lado2) \
+            or (self.lado2==self.lado3 and self.lado1>self.lado3):
+            print(f'Lado mayor: {self.lado1}')
+            print(f'Tipo de triangulo: Isósceles')
+        elif (self.lado1==self.lado3 and self.lado2>self.lado1) \
+            or (self.lado2==self.lado3 and self.lado2>self.lado1):
+            print(f'Lado mayor: {self.lado2}')
+            print(f'Tipo de triangulo: Isósceles')
+        elif (self.lado1==self.lado2 and self.lado3>self.lado1):
+            print(f'Lado mayor: {self.lado3}')
+            print(f'Tipo de triangulo: Isósceles')
+        elif self.lado1>self.lado2 and self.lado1>self.lado3:
+            print(f'Lado mayor: {self.lado1}')
+            print(f'Tipo de triangulo: Escaleno')
+        elif self.lado2>self.lado1 and self.lado2>self.lado3:
+            print(f'Lado mayor: {self.lado2}')
+            print(f'Tipo de triangulo: Escaleno')
+        else:
+            print(f'Lado mayor: {self.lado3}')
+            print(f'Tipo de triangulo: Escaleno')
+    #Es más ordenado, pero son más líneas.
+    def caracteristicas2(self):
+        if self.lado1==self.lado2==self.lado3:
+            print(f'Lado mayor: {self.lado1}')
+            print(f'Tipo de triangulo: Equilatero')
+        elif self.lado1!=self.lado2 and self.lado1!=self.lado3:
+            if self.lado1>self.lado2 and self.lado1>self.lado3:
+                print(f'Lado mayor: {self.lado1}')
+            elif self.lado2>self.lado1 and self.lado2>self.lado3:
+                print(f'Lado mayor: {self.lado2}')
+            else:
+                print(f'Lado mayor: {self.lado3}')
+            print(f'Tipo de triangulo: Escaleno')
+        else:
+            if self.lado1==self.lado2:
+                if self.lado1>self.lado3:
+                    print(f'Lado mayor: {self.lado1}')
+                else:
+                    print(f'Lado mayor: {self.lado3}')
+            else:
+                if self.lado1>self.lado3:
+                    print(f'Lado mayor: {self.lado1}')
+                else:
+                    print(f'Lado mayor: {self.lado3}')
+            print(f'Tipo de triangulo: Isósceles')
+        
+'''
+triangulo1=Triangulo(8,3,4)
+triangulo1.ladoMayor()
+triangulo1.tipoTriangulo()
+triangulo1.caracteristicas()
+triangulo1.caracteristicas2()
+print()
+triangulo1=Triangulo(3,3,5)
+triangulo1.ladoMayor()
+triangulo1.tipoTriangulo()
+triangulo1.caracteristicas()
+triangulo1.caracteristicas2()
+print()
+triangulo1=Triangulo(3,3,3)
+triangulo1.ladoMayor()
+triangulo1.tipoTriangulo()
+triangulo1.caracteristicas()
+triangulo1.caracteristicas2()
+print()
+'''    
 
+        
+        
 '''
 8) Realizar un programa en el cual se declaren dos valores enteros por teclado utilizando el método __init__. Calcular después la suma, resta, multiplicación y división. Utilizar un método para cada una e imprimir los resultados obtenidos. Llamar a la clase Calculadora.
 '''
-
+class Calculadora:
+    def __init__(self, numero1, numero2):
+        self.numero1=numero1
+        self.numero2=numero2
+    def suma(self):
+        return self.numero1 + self.numero2
+    def resta(self):
+        return self.numero1 - self.numero2
+    def multiplicacion(self):
+        return self.numero1 * self.numero2
+    def division(self):
+        return self.numero1 / self.numero2
+    
+'''
+calculos=Calculadora(9,3)
+print(calculos.suma())
+print(calculos.resta())
+print(calculos.multiplicacion())
+print(calculos.division())
+print(calculos.__init__(1,2))
+'''
+        
 '''
 9) Realizar una clase que administre una agenda. Se debe almacenar para cada contacto el nombre, el teléfono y el email. Además deberá mostrar un menú con las siguientes opciones: Añadir contacto, Listar contactos, Buscar contacto, Editar contacto, Cerrar agenda.
 '''
 
+class Agenda:
+    def __init__(self):
+        self.listaContactos=[]
+        self.abierta=False
+    def menu(self):
+        self.abierta=True
+        print("--------------")
+        print("Seleccione una opción")
+        print("--------------")
+        print("1-Añadir contacto")
+        print("2-Listar contactos")
+        print("3-Buscar contactos")
+        print("4-Editar contacto")
+        print("5-Cerrar agenda")
+        choice=input("Opción: ")
+        while(choice != "5"):
+            if choice == "1":
+                self.añadirContacto()
+            elif choice == "2":
+                self.listarContactos()
+            elif choice == "3":
+                self.buscarContacto()
+            elif choice == "4":
+                self.editarContacto()
+            elif choice == "5":
+                continue
+            else:
+                print("La opción ingresada no es válida")
+            choice=input("Opción: ")
+        self.cerrarAgenda()
+        
+    def añadirContacto(self):
+        contacto=[]
+        contacto.append(input("Ingrese el nombre del contacto: "))
+        contacto.append(input("Ingrese el nombre del teléfono: "))
+        contacto.append(input("Ingrese el nombre del email: "))
+        self.listaContactos.append(contacto)
+    #Falta la funcionalidad de estas funciones que vienen, mañana las haré
+    def listarContactos(self):
+        return print("listar contacto")
+    def buscarContacto(self):
+        return print("buscar contacto")
+    def editarContacto(self):
+        return print("editar contacto")
+    def cerrarAgenda(self):
+        self.abierta=False
+        print("La agenda se ha cerrado")
+        
+agendaAlan=Agenda()
+agendaAlan.menu()   
+
+        
 '''
 10) En un banco tienen clientes que pueden hacer depósitos y extracciones de dinero. El banco requiere también al final del día calcular la cantidad de dinero que se ha depositado. Se deberán crear dos clases, la clase cliente y la clase banco. La clase cliente tendrá los atributos nombre y cantidad y los métodos __init__, depositar, extraer, mostrar_total. La clase banco tendrá como atributos 3 objetos de la clase cliente y los métodos __init__, operar y deposito_total.
 '''
