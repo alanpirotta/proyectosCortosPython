@@ -8,19 +8,19 @@ class Persona:
     def inicializar(self, nom, e):
         self.nombre=nom
         self.edad=e
-        
+
     def set_nombre(self, nom):
         self.nombre = nom
-    
+
     def set_edad(self, e):
         self.edad = e
-    
+
     def get_nombre(self):
         return self.nombre
-    
+
     def get_edad(self):
         return self.edad
-    
+
     def mayor_de_edad(self):
         if self.edad > 18:
             return True
@@ -41,12 +41,12 @@ class Persona:
             return persona1
         else:
             return persona2
-        
-            
+
+
     #Método para impimir los datos, no es necesario
     # def imprimir(self):
     #     print(f'Nombre: {self.nombre}. Edad: {self.edad}')
-    
+
 persona1 = Persona()
 Persona.set_nombre(persona1, "Daniela")
 Persona.set_edad(persona1, 14)
@@ -60,9 +60,9 @@ print(Persona.get_nombre(persona1))
 print(Persona.get_edad(persona1))
 print(persona1.get_nombre())
 print(persona1.get_eda())
-'''    
+'''
 
-        
+
 '''
 2) Agregarle a la clase anterior un constructor que reciba nombre y edad.
 '''
@@ -85,7 +85,7 @@ print(persona2.mayor_de_edad())
 '''
 4) Agregarle un método “es_mayor_que” el cual recibe un objeto persona y compara su edad con la del objeto actual.
 '''
-# print("es mayor que", persona2.es_mayor_que(persona1.edad)) 
+# print("es mayor que", persona2.es_mayor_que(persona1.edad))
 #está mal esto, revisar teoría
 
 '''
@@ -187,7 +187,7 @@ class Triangulo:
                 else:
                     print(f'Lado mayor: {self.lado3}')
             print(f'Tipo de triangulo: Isósceles')
-        
+
 '''
 triangulo1=Triangulo(8,3,4)
 triangulo1.ladoMayor()
@@ -207,10 +207,10 @@ triangulo1.tipoTriangulo()
 triangulo1.caracteristicas()
 triangulo1.caracteristicas2()
 print()
-'''    
+'''
 
-        
-        
+
+
 '''
 8) Realizar un programa en el cual se declaren dos valores enteros por teclado utilizando el método __init__. Calcular después la suma, resta, multiplicación y división. Utilizar un método para cada una e imprimir los resultados obtenidos. Llamar a la clase Calculadora.
 '''
@@ -226,7 +226,7 @@ class Calculadora:
         return self.numero1 * self.numero2
     def division(self):
         return self.numero1 / self.numero2
-    
+
 '''
 calculos=Calculadora(9,3)
 print(calculos.suma())
@@ -235,63 +235,12 @@ print(calculos.multiplicacion())
 print(calculos.division())
 print(calculos.__init__(1,2))
 '''
-        
+
 '''
 9) Realizar una clase que administre una agenda. Se debe almacenar para cada contacto el nombre, el teléfono y el email. Además deberá mostrar un menú con las siguientes opciones: Añadir contacto, Listar contactos, Buscar contacto, Editar contacto, Cerrar agenda.
 '''
+# Lo hice en un archivo separado
 
-class Agenda:
-    def __init__(self):
-        self.listaContactos=[]
-        self.abierta=False
-    def menu(self):
-        self.abierta=True
-        print("--------------")
-        print("Seleccione una opción")
-        print("--------------")
-        print("1-Añadir contacto")
-        print("2-Listar contactos")
-        print("3-Buscar contactos")
-        print("4-Editar contacto")
-        print("5-Cerrar agenda")
-        choice=input("Opción: ")
-        while(choice != "5"):
-            if choice == "1":
-                self.añadirContacto()
-            elif choice == "2":
-                self.listarContactos()
-            elif choice == "3":
-                self.buscarContacto()
-            elif choice == "4":
-                self.editarContacto()
-            elif choice == "5":
-                continue
-            else:
-                print("La opción ingresada no es válida")
-            choice=input("Opción: ")
-        self.cerrarAgenda()
-        
-    def añadirContacto(self):
-        contacto=[]
-        contacto.append(input("Ingrese el nombre del contacto: "))
-        contacto.append(input("Ingrese el nombre del teléfono: "))
-        contacto.append(input("Ingrese el nombre del email: "))
-        self.listaContactos.append(contacto)
-    #Falta la funcionalidad de estas funciones que vienen, mañana las haré
-    def listarContactos(self):
-        return print("listar contacto")
-    def buscarContacto(self):
-        return print("buscar contacto")
-    def editarContacto(self):
-        return print("editar contacto")
-    def cerrarAgenda(self):
-        self.abierta=False
-        print("La agenda se ha cerrado")
-        
-agendaAlan=Agenda()
-agendaAlan.menu()   
-
-        
 '''
 10) En un banco tienen clientes que pueden hacer depósitos y extracciones de dinero. El banco requiere también al final del día calcular la cantidad de dinero que se ha depositado. Se deberán crear dos clases, la clase cliente y la clase banco. La clase cliente tendrá los atributos nombre y cantidad y los métodos __init__, depositar, extraer, mostrar_total. La clase banco tendrá como atributos 3 objetos de la clase cliente y los métodos __init__, operar y deposito_total.
 '''
