@@ -5,10 +5,13 @@ class Persona:
     nombre = ""
     edad = ""
     #ej 2
-    def inicializar(self, nom, e):
+    def __init__(self, nom, e):
         self.nombre=nom
         self.edad=e
 
+    def __str__(self) -> str:
+        return f'Nombre: {self.nombre}. Edad: {self.edad}'
+         
     def set_nombre(self, nom):
         self.nombre = nom
 
@@ -28,16 +31,20 @@ class Persona:
             return False
 
     def es_mayor_que(self, persona):
-        if self.edad > persona:
+        edad1=Persona.get_edad(self)
+        edad2=Persona.get_edad(persona)
+        if edad1 > edad2:
             return True
         else:
             return False
 
     @staticmethod
     def get_mayor(persona1,persona2):
-        if persona1 == persona2:
+        edad1=Persona.get_edad(persona1)
+        edad2=Persona.get_edad(persona2)
+        if edad1 == edad2:
             return "las dos personas tienen la misma edad"
-        elif persona1 > persona2:
+        elif edad1 > edad2:
             return persona1
         else:
             return persona2
@@ -47,7 +54,8 @@ class Persona:
     # def imprimir(self):
     #     print(f'Nombre: {self.nombre}. Edad: {self.edad}')
 
-persona1 = Persona()
+persona1 = Persona("Alan",12)
+persona2 = Persona("Elsa",65)
 Persona.set_nombre(persona1, "Daniela")
 Persona.set_edad(persona1, 14)
 '''
@@ -85,14 +93,14 @@ print(persona2.mayor_de_edad())
 '''
 4) Agregarle un método “es_mayor_que” el cual recibe un objeto persona y compara su edad con la del objeto actual.
 '''
-# print("es mayor que", persona2.es_mayor_que(persona1.edad))
-#está mal esto, revisar teoría
+print(persona2.nombre, "es mayor que", persona1.nombre, "?", persona2.es_mayor_que(persona1))
+
 
 '''
 5) Agregarle un método estático “get_mayor” que reciba dos objetos Persona y devuelva el de edad mayor.
 '''
-# print(Persona.get_mayor(persona1.edad, persona2.edad))
-#está mal esto, revisar teoría
+print("Persona de mayor edad:", Persona.get_mayor(persona1, persona2))
+
 '''
 6) Realizar un programa que conste de una clase llamada Alumno que tenga como atributos el nombre y la nota del alumno. Definir los métodos para inicializar sus atributos, imprimirlos y mostrar un mensaje con el resultado de la nota y si ha aprobado o no.´
 '''
