@@ -1,6 +1,9 @@
 '''
 1) Crear la clase Persona con los métodos “set_nombre”, “set_edad”, “get_nombre”, “get_edad” y “print_persona”. Luego crear dos objetos del tipo Persona e imprimirlos por consola.
 '''
+from os import name
+
+
 class Persona:
     nombre = ""
     edad = ""
@@ -93,13 +96,17 @@ print(persona2.mayor_de_edad())
 '''
 4) Agregarle un método “es_mayor_que” el cual recibe un objeto persona y compara su edad con la del objeto actual.
 '''
+'''
 print(persona2.nombre, "es mayor que", persona1.nombre, "?", persona2.es_mayor_que(persona1))
+'''
 
 
 '''
 5) Agregarle un método estático “get_mayor” que reciba dos objetos Persona y devuelva el de edad mayor.
 '''
+'''
 print("Persona de mayor edad:", Persona.get_mayor(persona1, persona2))
+'''
 
 '''
 6) Realizar un programa que conste de una clase llamada Alumno que tenga como atributos el nombre y la nota del alumno. Definir los métodos para inicializar sus atributos, imprimirlos y mostrar un mensaje con el resultado de la nota y si ha aprobado o no.´
@@ -252,3 +259,57 @@ print(calculos.__init__(1,2))
 '''
 10) En un banco tienen clientes que pueden hacer depósitos y extracciones de dinero. El banco requiere también al final del día calcular la cantidad de dinero que se ha depositado. Se deberán crear dos clases, la clase cliente y la clase banco. La clase cliente tendrá los atributos nombre y cantidad y los métodos __init__, depositar, extraer, mostrar_total. La clase banco tendrá como atributos 3 objetos de la clase cliente y los métodos __init__, operar y deposito_total.
 '''
+#Cumple con lo que pide, pero no es una clase funcional real (se le debería agregar bien un menú, y poder agregar más clientes y realizar todos los cálculos con ella)
+class Cliente:
+    def __init__(self,nombre,cantidad):
+        self.nombre=nombre
+        self.cantidad=cantidad
+    def depositar(self,monto):
+        self.cantidad += monto
+        return self.cantidad
+    def extraer(self,monto):
+        self.cantidad -= monto
+        return self.cantidad
+    def mostrar_total(self):
+        return self.cantidad
+    
+class Banco:
+    def __init__(self, cliente1, monto1, cliente2, monto2, cliente3, monto3):
+        self.cliente1= Cliente(cliente1, monto1)
+        self.cliente2= Cliente(cliente2, monto2)
+        self.cliente3= Cliente(cliente3, monto3)
+    def operar(self,cliente,monto):
+        operacion=None
+        while not (operacion == 1 or operacion == 2):
+            operacion= int(input("""Seleccione tipo de operación: \n
+                         1- Extracción\n
+                         2- Depósito\n"""))
+            if cliente == self.cliente1.nombre:
+                if operacion == 1:
+                    self.cliente1.extraer(monto)
+                elif operacion == 2:
+                    self.cliente1.depositar(monto)
+            elif cliente == self.cliente2.nombre:
+                if operacion == 1:
+                    self.cliente2.extraer(monto)
+                elif operacion == 2:
+                    self.cliente2.depositar(monto)
+            elif cliente == self.cliente3.nombre:
+                if operacion == 1:
+                    self.cliente3.extraer(monto)
+                elif operacion == 2:
+                    self.cliente3.depositar(monto)
+            else:
+                print('La opción ingresada no es válida')
+    def deposito_total(self):
+        return self.cliente1.mostrar_total() + Cliente.mostrar_total(self.cliente2) + Cliente.mostrar_total(self.cliente3)
+        
+        
+        
+banco1= Banco("Alan",150,"Daniela",100,"Lira",500)
+print(banco1.deposito_total())
+cliente=input('Ingrese el nombre del cliente: ')
+monto= input('Ingrese el monto para la operación: ')
+banco1.operar(cliente,monto)
+print(f'El Monto actualizado de la cuenta es: ${banco1.cliente1.mostrar_total()}')
+print(f'Los depósitos totales en el banco son de ${banco1.deposito_total()}')
