@@ -1,1 +1,1 @@
-- f-string en varios renglones. El indentado desde el segundo renglón queda extraño, tengo que llevarlo hasta no tener indentado. Debe haber mejor forma
+- Carpeta __pycache__ . Se creo al correr un script de una clase hija (evitando que corra el padre con __name__ == '__main__')
