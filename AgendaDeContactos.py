@@ -48,8 +48,8 @@ class Agenda:
         self.listaContactos[0].append(self.id)
         self.id+=1
         self.listaContactos[1].append(input("Ingrese el nombre del contacto: "))
-        self.listaContactos[2].append(input("Ingrese el nombre del teléfono: "))
-        self.listaContactos[3].append(input("Ingrese el nombre del email: "))
+        self.listaContactos[2].append(input("Ingrese el número de teléfono: "))
+        self.listaContactos[3].append(input("Ingrese el email: "))
 
     def listarContactos(self):
         for i in range(len(self.listaContactos[0])):
