@@ -64,7 +64,7 @@ print("Salí del loop!")
 #         print("Soy un método inalcanzable desde fuera.")
 # e = Ejemplo()
 # e.__metodo_privado() 
-
+'''
 class Ejemplo:
     __atributo_privado = "Soy un atributo inalcanzable desde fuera."
 
@@ -80,3 +80,5 @@ class Ejemplo:
 e = Ejemplo()
 print(e.atributo_publico())
 e.metodo_publico()
+'''
+
